@@ -4,6 +4,7 @@ import { Navbar } from '../../components/navbar/Navbar'
 import { Header } from '../../components/header/Header'
 import { Featured } from '../featured/Featured'
 import { PropertyList } from '../../components/propertyList/PropertyList'
+import { FeaturedProperties } from '../../components/featuredProperties/FeaturedProperties'
 
 export const Home = () => {
   return (
@@ -13,8 +14,10 @@ export const Home = () => {
 
       <div className="homeContainer">
         <Featured />
-        <div className="homeTitle">Browse by property type</div>
+        <h1 className="homeTitle">Browse by property type</h1>
         <PropertyList />
+        <h1 className="homeTitle">Browse by price</h1>
+        <FeaturedProperties />
       </div>
     </div>
   )
