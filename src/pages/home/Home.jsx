@@ -6,6 +6,7 @@ import { Featured } from '../featured/Featured'
 import { PropertyList } from '../../components/propertyList/PropertyList'
 import { FeaturedProperties } from '../../components/featuredProperties/FeaturedProperties'
 import { MailList } from '../../components/mailList/MailList'
+import { Footer } from '../../components/footer/Footer'
 
 export const Home = () => {
   return (
@@ -20,6 +21,7 @@ export const Home = () => {
         <h1 className="homeTitle">Browse by price</h1>
         <FeaturedProperties />
         <MailList />
+        <Footer />
       </div>
     </div>
   )
