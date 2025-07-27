@@ -5,6 +5,7 @@ import './list.css'
 import { useLocation } from 'react-router-dom'
 import { format } from 'date-fns'
 import { DateRange } from 'react-date-range';
+import { SearchItem } from '../../components/searchItem/SearchItem'
 
 export const List = () => {
   const location = useLocation();
@@ -67,7 +68,15 @@ export const List = () => {
             </div> {/* listItem */}
             <button>Search</button>
           </div> {/* listSearch */}
-          <div className="listResult"></div>
+          <div className="listResult">
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+            <SearchItem />
+          </div>
         </div>
       </div>
     </div>
