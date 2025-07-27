@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Navbar } from '../../components/navbar/Navbar'
 import { Header } from '../../components/header/Header'
 import './list.css'
 import { useLocation } from 'react-router-dom'
+import { format } from 'date-fns'
+import { DateRange } from 'react-date-range';
 
 export const List = () => {
   const location = useLocation();
-  console.log(location);
+  const [destination, setDestination] = useState(location.state.destination);
+  const [date, setDate] = useState(location.state.date);
+  const [openDate, setOpenDate] = useState(false);
+  const [options, setOptions] = useState(location.state.options);
+
   return (
     <div>
       <Navbar />
@@ -17,14 +23,50 @@ export const List = () => {
             <h1 className="listTitle">Search</h1>
             <div className="listItem">
               <label htmlFor="destination">Destination</label>
-              <input type="text" placeholder='Where are you going?' />
+              <input type="text" placeholder={`${destination}`} />
             </div>
             <div className="listItem">
               <label htmlFor="date">Check-in Date</label>
-              <input type="date" />
+              <span onClick={() => setOpenDate(!openDate)}>{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
+              {openDate && <DateRange
+                onChange={item => setDate([item.selection])}
+                minDate={new Date()}
+                ranges={date}
+              />}
             </div>
-            <div className="listItem"></div>
-          </div>
+
+            <div className="listItem">
+              <label htmlFor="options">Options</label>
+              <div className="listOptions">
+
+                <div className="listOptionItem">
+                  <span className="listOptionText">Min Price <small>per night</small></span>
+                  <input type="number" className="listOptionInput" />
+                </div>
+
+                <div className="listOptionItem">
+                  <span className="listOptionText">Max Price <small>per night</small></span>
+                  <input type="number" className="listOptionInput" />
+                </div>
+
+                <div className="listOptionItem">
+                  <span className="listOptionText">Adult</span>
+                  <input type="number" min={1} className="listOptionInput" placeholder={options.adult} />
+                </div>
+
+                <div className="listOptionItem">
+                  <span className="listOptionText">Children </span>
+                  <input type="number" min={0} className="listOptionInput" placeholder={options.children} />
+                </div>
+
+                <div className="listOptionItem">
+                  <span className="listOptionText">Room</span>
+                  <input type="number" min={1} className="listOptionInput" placeholder={options.room} />
+                </div>
+              </div> {/* listOptions */}
+            </div> {/* listItem */}
+            <button>Search</button>
+          </div> {/* listSearch */}
           <div className="listResult"></div>
         </div>
       </div>
