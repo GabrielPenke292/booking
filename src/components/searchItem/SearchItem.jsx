@@ -14,8 +14,19 @@ export const SearchItem = () => {
         <span className="searchItemCancelOp">Free cancellation</span>
         <span className="searchItemCancelOpSubtitle">You can cancel later, so lock in this great price today!</span>
 
-      </div>
-      <div className="searchItemDetails">Details</div>
+      </div>{/* searchItemDesc */}
+      <div className="searchItemDetails">
+        <div className="searchItemRating">
+          <span>Excellent</span>
+          <button>8.9</button>
+        </div>
+        <div className="searchItemDetailTexts">
+           <span className="searchItemPrice">$ 123</span>
+           <span className="searchItemTaxOp">Includes taxes and fees</span>
+           <button className="searchItemCheckButton">See availability</button>
+        </div>
+      </div>{/* searchItemDetails */}
+
     </div>
   )
 }
