@@ -4,6 +4,8 @@ import { Navbar } from '../../components/navbar/Navbar'
 import { Header } from '../../components/header/Header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { MailList } from '../../components/mailList/MailList'
+import { Footer } from '../../components/footer/Footer'
 
 export const Hotel = () => {
   const photos = [
@@ -29,6 +31,7 @@ export const Hotel = () => {
       <Header type="list" />
       <div className="hotelContainer">
         <div className="hotelWrapper">
+          <button className="bookNow">Reserve or Book Now!</button>
           <h1 className="hotelTitle">Grand Hotel</h1>
           <div className="hotelAddress">
             <FontAwesomeIcon icon={faLocationDot} />
@@ -61,8 +64,10 @@ export const Hotel = () => {
               <button>Reserve or Book Now!</button>
             </div>
           </div>{/* hotelDetails */}
-        </div>
-      </div>
-    </div>
+        </div> {/* hotelWrapper */}
+        <MailList />
+        <Footer />  
+      </div> {/* hotelContainer */}
+    </div> 
   )
 }
