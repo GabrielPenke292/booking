@@ -34,6 +34,15 @@ app.use("/api/v1/users", usersRoute);
 app.use("/api/v1/hotels", hotelsRoute);
 app.use("/api/v1/rooms", roomsRoute);
 
+app.use((err, req, res, next) => {
+    return res.status(err.status || 500).json({
+        success: false,
+        status: err.status || 500,
+        message: err.message || "Something went wrong!",
+        stack: err.stack,
+    });
+})
+
 app.listen(8800, () => {
     connect();
     console.log("connected to backend.");
